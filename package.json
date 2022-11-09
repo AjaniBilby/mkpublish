@@ -1,0 +1,45 @@
+{
+	"name": "mkpublish",
+	"version": "0.0.1",
+	"description": "Compile your markdown document to something publishable",
+	"main": "index.js",
+	"preferGlobal": true,
+	"engineStrict": true,
+	"engines": {
+		"node": ">=14"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bin": {
+		"mkpublish": "tools/cli.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ajanibilby/mkpublish.git"
+	},
+	"keywords": [
+		"markdown",
+		"markdown-it",
+		"publish",
+		"pdf",
+		"html",
+		"mathjax",
+		"footnote"
+	],
+	"author": "Ajani Bilby",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ajanibilby/mkpublish/issues"
+	},
+	"homepage": "https://github.com/ajanibilby/mkpublish#readme",
+	"dependencies": {
+		"markdown-it": "^13.0.1",
+		"shiki": "^0.11.1"
+	},
+	"devDependencies": {
+		"markdown-it-footnote": "^3.0.3",
+		"markdown-it-mathjax": "^2.0.0",
+		"markdown-it-mermaid": "^0.2.5"
+	}
+}
