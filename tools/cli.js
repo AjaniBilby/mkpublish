@@ -18,7 +18,6 @@ let config = {
 
 		].map(x => x.relative(__dirname, x))
 	},
-	styles: [],
 
 	mathjax: true,
 	mermaid: {
@@ -39,6 +38,16 @@ function CopyObjectValue_ByKeys(from, to, keys) {
 
 
 let args = process.argv.slice(2);
+
+if (args.includes('--init')) {
+	delete config.code.languages;
+	fs.writeFileSync('mkpub.json', JSON.stringify(config, null, 2));
+
+	process.exit(0);
+}
+
+
+
 if (args.length > 1) {
 	console.error("Supplied too many arguments");
 	process.exit(1);
@@ -53,10 +62,6 @@ if (args.length > 1) {
 
 	let custom = JSON.parse(fs.readFileSync('mkpub.json'));
 	CopyObjectValue_ByKeys(custom, config, ['entry', 'output', 'theme', 'mathjax', 'footnotes']);
-
-	if (custom.styles) {
-		config.styles = custom.styles || [];
-	}
 
 	if (custom.code) {
 		config.code.theme = custom.code.theme || config.code.theme;
