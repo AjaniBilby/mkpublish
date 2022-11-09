@@ -10,15 +10,15 @@ let config = {
 	entry: "index.md",
 	output: "index.html",
 
+	theme: "academic",
+
 	code: {
 		theme: 'monokai',
 		languages: [
 
 		].map(x => x.relative(__dirname, x))
 	},
-	styles: [
-
-	].map(x => x.relative(__dirname, x)),
+	styles: [],
 
 	mathjax: true,
 	mermaid: {
@@ -52,14 +52,10 @@ if (args.length > 1) {
 	}
 
 	let custom = JSON.parse(fs.readFileSync('mkpub.json'));
-	CopyObjectValue_ByKeys(custom, config, ['entry', 'output', 'mathjax', 'footnotes']);
+	CopyObjectValue_ByKeys(custom, config, ['entry', 'output', 'theme', 'mathjax', 'footnotes']);
 
 	if (custom.styles) {
-		if (custom['override-styles']) {
-			config.styles = custom.styles || [];
-		} else {
-			config.styles.concat(custom.styles || []);
-		}
+		config.styles = custom.styles || [];
 	}
 
 	if (custom.code) {
